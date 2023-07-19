@@ -4,119 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62c8afb5-07b7-48f9-84ee-bd3b7c3e5ddd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/Java.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Map/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Map/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Map/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Map/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Map/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Map/Map.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_32.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetoJDBC.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db/DB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db/DbException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/entities/Cliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/entities/Departamento.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/entities/Emprestimo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/entities/Funcionario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Set/Set.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../compras/compras.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../date/date.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../generic/generic.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc/.idea/libraries/mysql_connector_j_8_0_32.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc/jdbc.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc/src/application/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc/src/db/DB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc/src/db/DbException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc2/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc2/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc2/.idea/libraries/mysql_connector_j_8_0_32.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc2/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc2/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc2/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc2/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc2/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc2/jdbc.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc2/src/application/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc2/src/db/DB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc2/src/db/DbException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc3/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc3/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc3/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc3/.idea/libraries/mysql_connector_j_8_0_32.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc3/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc3/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc3/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc3/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc3/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc3/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc3/jdbc.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc3/src/application/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc3/src/db/DB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc3/src/db/DbException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc4/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc4/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc4/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc4/.idea/libraries/mysql_connector_j_8_0_32.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc4/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc4/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc4/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc4/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc4/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc4/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc4/jdbc.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc4/src/application/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc4/src/db/DB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc4/src/db/DbException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc5/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc5/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc5/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc5/.idea/libraries/mysql_connector_j_8_0_32.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc5/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc5/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc5/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc5/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc5/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc5/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc5/jdbc.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc5/src/application/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc5/src/db/DB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc5/src/db/DbException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc5/src/db/DbIntegrityException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc6/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc6/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc6/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc6/.idea/libraries/mysql_connector_j_8_0_32.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc6/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc6/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc6/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc6/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc6/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc6/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc6/jdbc.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc6/src/application/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc6/src/db/DB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc6/src/db/DbException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdbc6/src/db/DbIntegrityException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../programacao_funcional/programacao_funcional.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/untitled.iml" afterDir="false" />
+    <list default="true" id="62c8afb5-07b7-48f9-84ee-bd3b7c3e5ddd" name="Changes" comment="Inicializando repositório com as entidades criadas">
+      <change afterPath="$PROJECT_DIR$/src/model/dao/ClienteDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/dao/DepartamentoDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/dao/EmprestimoDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/dao/FuncionarioDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,11 +22,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="ProjectId" id="2Sn6lhcC6jQiYVxPe3lVbUKNNVR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -141,29 +38,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/java-libs/jbdc-connectors/mysql-connector-j-8.0.32.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/java-libs/jbdc-connectors/mysql-connector-j-8.0.32.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -173,10 +71,29 @@
       <option name="presentableId" value="Default" />
       <updated>1689770152354</updated>
       <workItem from="1689770154028" duration="4362000" />
+      <workItem from="1689781135309" duration="700000" />
+      <workItem from="1689785314601" duration="1239000" />
+      <workItem from="1689793902006" duration="3488000" />
     </task>
+    <task id="LOCAL-00001" summary="Inicializando repositório com as entidades criadas">
+      <option name="closed" value="true" />
+      <created>1689781258354</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1689781258354</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+    <MESSAGE value="Inicializando repositório com as entidades criadas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inicializando repositório com as entidades criadas" />
   </component>
 </project>
