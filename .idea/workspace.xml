@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62c8afb5-07b7-48f9-84ee-bd3b7c3e5ddd" name="Changes" comment="Inicializando repositório com as entidades criadas">
-      <change afterPath="$PROJECT_DIR$/src/model/dao/ClienteDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/dao/DepartamentoDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/dao/EmprestimoDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/dao/FuncionarioDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="62c8afb5-07b7-48f9-84ee-bd3b7c3e5ddd" name="Changes" comment="DAO das entidades do negócio">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/dao/DaoFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/dao/impl/DepartamentoDaoJDBC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/db.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/dao/FuncionarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/dao/FuncionarioDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,14 +22,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Sn6lhcC6jQiYVxPe3lVbUKNNVR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -73,7 +77,8 @@
       <workItem from="1689770154028" duration="4362000" />
       <workItem from="1689781135309" duration="700000" />
       <workItem from="1689785314601" duration="1239000" />
-      <workItem from="1689793902006" duration="3488000" />
+      <workItem from="1689793902006" duration="4555000" />
+      <workItem from="1689886695301" duration="6995000" />
     </task>
     <task id="LOCAL-00001" summary="Inicializando repositório com as entidades criadas">
       <option name="closed" value="true" />
@@ -83,7 +88,15 @@
       <option name="project" value="LOCAL" />
       <updated>1689781258354</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="DAO das entidades do negócio">
+      <option name="closed" value="true" />
+      <created>1689800343446</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1689800343446</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -94,6 +107,7 @@
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
     <MESSAGE value="Inicializando repositório com as entidades criadas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Inicializando repositório com as entidades criadas" />
+    <MESSAGE value="DAO das entidades do negócio" />
+    <option name="LAST_COMMIT_MESSAGE" value="DAO das entidades do negócio" />
   </component>
 </project>

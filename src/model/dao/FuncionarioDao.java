@@ -11,6 +11,6 @@ public interface FuncionarioDao {
     void atualizarFuncionario(Funcionario funcionario);
     void removerFuncionario(Funcionario funcionario);
     Funcionario encontrarFuncionarioId(Integer id);
-    List<Departamento> funcionariosDepartamento(Departamento departamento);
+    List<Funcionario> funcionariosDepartamento(Departamento departamento);
     List<Funcionario> todosFuncionarios();
 }
