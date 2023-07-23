@@ -11,12 +11,15 @@ import java.util.List;
 
 public class DepartamentoDaoJDBC implements DepartamentoDao {
 
-    public DepartamentoDaoJDBC() {
+    private final Connection connection;
+
+    public DepartamentoDaoJDBC(Connection connection) {
+        this.connection = connection;
     }
 
     @Override
     public void inserirDepartamento(Departamento departamento) {
-        try (Connection connection = DB.getConnection()) {
+        try {
             String sql = "INSERT INTO departamento (nome) VALUES (?)";
             try (PreparedStatement preparedStatement =
                          connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -43,7 +46,7 @@ public class DepartamentoDaoJDBC implements DepartamentoDao {
     //Atualizar departamento pelo ID
     @Override
     public void atualizarDepartamento(Departamento departamento) {
-        try (Connection connection = DB.getConnection()) {
+        try {
             String sql = "UPDATE departamento SET nome = ? WHERE id = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, departamento.getNome());
@@ -60,7 +63,7 @@ public class DepartamentoDaoJDBC implements DepartamentoDao {
     //Deletar departamento pelo ID
     @Override
     public void removerDepartamento(Departamento departamento) {
-        try (Connection connection = DB.getConnection()) {
+        try {
             String sql = "DELETE FROM departamento WHERE id = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setInt(1, departamento.getId());
@@ -75,7 +78,7 @@ public class DepartamentoDaoJDBC implements DepartamentoDao {
 
     @Override
     public Departamento encontrarDepartamentoPorId(Integer id) {
-        try (Connection connection = DB.getConnection()) {
+        try {
             String sql = "SELECT * FROM departamento WHERE id = ?";
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -100,7 +103,7 @@ public class DepartamentoDaoJDBC implements DepartamentoDao {
 
     @Override
     public List<Departamento> todosDepartamentos() {
-        try (Connection connection = DB.getConnection()) {
+        try {
             String sql = "SELECT * FROM departamento";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql);
                  ResultSet resultSet = preparedStatement.executeQuery()) {

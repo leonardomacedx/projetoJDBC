@@ -36,6 +36,7 @@ public class DB {
         }
     }
 
+
     private static Properties loadProperties() {
         try (FileInputStream lerArquivo = new FileInputStream("db.properties")){
             Properties properties = new Properties();

@@ -9,7 +9,7 @@ import model.entities.Funcionario;
 public class DaoFactory {
 
     public static DepartamentoDao createDepartamentoDao() {
-        return new DepartamentoDaoJDBC();
+        return new DepartamentoDaoJDBC(DB.getConnection());
     }
 
     public static ClienteDao createClienteDao() {

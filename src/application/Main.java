@@ -28,7 +28,7 @@ public class Main {
         System.out.println();
 
         System.out.println("=== Teste 3 ===");
-        Departamento departamento2 = new Departamento(1, null);
+        Departamento departamento2 = new Departamento(7, null);
         departamentoDao.removerDepartamento(departamento2);
         System.out.println("Departamento removido!");
         System.out.println();
@@ -41,9 +41,11 @@ public class Main {
         System.out.println();
 
         System.out.println("=== Teste 5 ===");
-        List<Departamento> listaDepartamentos = new ArrayList<>();
+        List<Departamento> listaDepartamentos;
         listaDepartamentos = departamentoDao.todosDepartamentos();
-        System.out.println(listaDepartamentos);
+        for (Departamento departamentos : listaDepartamentos) {
+            System.out.println(departamentos);
+        }
 
     }
 }
