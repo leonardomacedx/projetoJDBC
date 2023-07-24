@@ -1,6 +1,7 @@
 package model.dao;
 
 import db.DB;
+import model.dao.impl.ClienteDaoJDBC;
 import model.dao.impl.DepartamentoDaoJDBC;
 import model.entities.Cliente;
 import model.entities.Emprestimo;
@@ -13,7 +14,7 @@ public class DaoFactory {
     }
 
     public static ClienteDao createClienteDao() {
-        return null;
+        return new ClienteDaoJDBC(DB.getConnection());
     }
 
     public static Funcionario createFuncionarioDao() {

@@ -6,9 +6,10 @@ import java.util.List;
 
 public interface ClienteDao {
 
-    void inserirCliente();
-    void atualizarCliente();
-    void removerCliente();
+    void inserirCliente(Cliente cliente);
+    void atualizarCliente(Cliente cliente);
+    void removerCliente(Cliente cliente);
+    Cliente encontrarClienteId(String id);
     Cliente encontrarCpf(String cpf);
     List<Cliente> todosClientes();
 
