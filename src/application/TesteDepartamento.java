@@ -27,15 +27,16 @@ public class TesteDepartamento {
         System.out.println();
 
         System.out.println("=== Teste 3 ===");
-        Departamento departamento2 = new Departamento(7, null);
-        departamentoDao.removerDepartamento(departamento2);
+        System.out.print("Id para remoção: ");
+        int idDelete = sc.nextInt();
+        departamentoDao.removerDepartamentoPorId(idDelete);
         System.out.println("Departamento removido!");
         System.out.println();
 
         System.out.println("=== Teste 4 ===");
         System.out.print("Id para retorno: ");
-        int id = sc.nextInt();
-        Departamento departamento3 = departamentoDao.encontrarDepartamentoPorId(id);
+        int idRetorno = sc.nextInt();
+        Departamento departamento3 = departamentoDao.encontrarDepartamentoPorId(idRetorno);
         System.out.println(departamento3);
         System.out.println();
 

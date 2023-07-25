@@ -8,8 +8,8 @@ public interface ClienteDao {
 
     void inserirCliente(Cliente cliente);
     void atualizarCliente(Cliente cliente);
-    void removerCliente(Cliente cliente);
-    Cliente encontrarClienteId(String id);
+    void removerCliente(Integer id);
+    Cliente encontrarClienteId(Integer id);
     Cliente encontrarCpf(String cpf);
     List<Cliente> todosClientes();
 

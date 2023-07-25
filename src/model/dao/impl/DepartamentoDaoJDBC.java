@@ -62,11 +62,11 @@ public class DepartamentoDaoJDBC implements DepartamentoDao {
 
     //Deletar departamento pelo ID
     @Override
-    public void removerDepartamento(Departamento departamento) {
+    public void removerDepartamentoPorId(Integer id) {
         try {
             String sql = "DELETE FROM departamento WHERE id = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setInt(1, departamento.getId());
+                preparedStatement.setInt(1, id);
 
                 preparedStatement.executeUpdate();
             }

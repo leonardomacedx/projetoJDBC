@@ -3,13 +3,15 @@ package model.dao.impl;
 import db.DbException;
 import model.dao.ClienteDao;
 import model.entities.Cliente;
+import model.entities.Departamento;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteDaoJDBC implements ClienteDao {
 
-    private Connection connection;
+    private final Connection connection;
 
     public ClienteDaoJDBC(Connection connection) {
         this.connection = connection;
@@ -49,26 +51,125 @@ public class ClienteDaoJDBC implements ClienteDao {
 
     @Override
     public void atualizarCliente(Cliente cliente) {
+        try {
+            String sql = "UPDATE cliente SET clienteCpf = ?, nome = ?, email = ?, " +
+                    "celular = ?, contaBanco = ?, endereco = ? WHERE id = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, cliente.getClienteCpf());
+                preparedStatement.setString(2, cliente.getNome());
+                preparedStatement.setString(3, cliente.getEmail());
+                preparedStatement.setString(4, cliente.getCelular());
+                preparedStatement.setString(5, cliente.getContaBanco());
+                preparedStatement.setString(6, cliente.getEndereco());
+                preparedStatement.setInt(7, cliente.getId());
 
+                preparedStatement.executeUpdate();
+            }
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+    }
+
+    //Remove cliente por id
+    @Override
+    public void removerCliente(Integer id) {
+        try {
+            String sql = "DELETE FROM cliente WHERE id = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, id);
+
+                preparedStatement.executeUpdate();
+            }
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
     }
 
     @Override
-    public void removerCliente(Cliente cliente) {
+    public Cliente encontrarClienteId(Integer id) {
+        try {
+            String sql = "SELECT * FROM cliente WHERE id = ?";
 
-    }
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, id);
 
-    @Override
-    public Cliente encontrarClienteId(String id) {
-        return null;
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    Cliente cliente = new Cliente();
+                    if (resultSet.next()) {
+                        cliente.setId(resultSet.getInt("id"));
+                        cliente.setClienteCpf(resultSet.getString("clienteCpf"));
+                        cliente.setNome(resultSet.getString("nome"));
+                        cliente.setEmail(resultSet.getString("email"));
+                        cliente.setCelular(resultSet.getString("celular"));
+                        cliente.setContaBanco(resultSet.getString("contaBanco"));
+                        cliente.setEndereco(resultSet.getString("endereco"));
+                        return cliente;
+
+                    }
+                    return null;
+                }
+            }
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
     }
 
     @Override
     public Cliente encontrarCpf(String cpf) {
-        return null;
+        try {
+            String sql = "SELECT * FROM cliente WHERE clienteCpf = ?";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, cpf);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    Cliente cliente = new Cliente();
+                    if (resultSet.next()) {
+                        cliente.setId(resultSet.getInt("id"));
+                        cliente.setClienteCpf(resultSet.getString("clienteCpf"));
+                        cliente.setNome(resultSet.getString("nome"));
+                        cliente.setEmail(resultSet.getString("email"));
+                        cliente.setCelular(resultSet.getString("celular"));
+                        cliente.setContaBanco(resultSet.getString("contaBanco"));
+                        cliente.setEndereco(resultSet.getString("endereco"));
+                        return cliente;
+
+                    }
+                    return null;
+                }
+            }
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
     }
 
     @Override
     public List<Cliente> todosClientes() {
-        return null;
+        try {
+            String sql = "SELECT * FROM cliente";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                List<Cliente> listaCliente = new ArrayList<>();
+                while (resultSet.next()) {
+                    Cliente cliente = new Cliente();
+                    cliente.setId(resultSet.getInt("id"));
+                    cliente.setClienteCpf(resultSet.getString("clienteCpf"));
+                    cliente.setNome(resultSet.getString("nome"));
+                    cliente.setEmail(resultSet.getString("email"));
+                    cliente.setCelular(resultSet.getString("celular"));
+                    cliente.setContaBanco(resultSet.getString("contaBanco"));
+                    cliente.setEndereco(resultSet.getString("endereco"));
+                    listaCliente.add(cliente);
+                }
+                return listaCliente;
+            }
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
     }
 }
