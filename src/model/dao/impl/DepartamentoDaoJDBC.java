@@ -1,6 +1,5 @@
 package model.dao.impl;
 
-import db.DB;
 import db.DbException;
 import model.dao.DepartamentoDao;
 import model.entities.Departamento;
@@ -19,26 +18,22 @@ public class DepartamentoDaoJDBC implements DepartamentoDao {
 
     @Override
     public void inserirDepartamento(Departamento departamento) {
-        try {
-            String sql = "INSERT INTO departamento (nome) VALUES (?)";
-            try (PreparedStatement preparedStatement =
-                         connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        String sql = "INSERT INTO departamento (nome) VALUES (?)";
+        try (PreparedStatement preparedStatement =
+                     connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(1, departamento.getNome());
 
-                preparedStatement.setString(1, departamento.getNome());
+            int linhasAfetadas = preparedStatement.executeUpdate();
 
-                int linhasAfetadas = preparedStatement.executeUpdate();
-
-                if (linhasAfetadas > 0) {
-                    ResultSet resultSet = preparedStatement.getGeneratedKeys();
-                    if (resultSet.next()) {
-                        int id = resultSet.getInt(1);
-                        departamento.setId(id);
-                    }
-                    resultSet.close();
+            if (linhasAfetadas > 0) {
+                ResultSet resultSet = preparedStatement.getGeneratedKeys();
+                if (resultSet.next()) {
+                    int id = resultSet.getInt(1);
+                    departamento.setId(id);
                 }
+                resultSet.close();
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new DbException(e.getMessage());
         }
     }
@@ -46,16 +41,13 @@ public class DepartamentoDaoJDBC implements DepartamentoDao {
     //Atualizar departamento pelo ID
     @Override
     public void atualizarDepartamento(Departamento departamento) {
-        try {
-            String sql = "UPDATE departamento SET nome = ? WHERE id = ?";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setString(1, departamento.getNome());
-                preparedStatement.setInt(2, departamento.getId());
+        String sql = "UPDATE departamento SET nome = ? WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, departamento.getNome());
+            preparedStatement.setInt(2, departamento.getId());
 
-                preparedStatement.executeUpdate();
-            }
-        }
-        catch (SQLException e) {
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
             throw new DbException(e.getMessage());
         }
     }
@@ -63,61 +55,51 @@ public class DepartamentoDaoJDBC implements DepartamentoDao {
     //Deletar departamento pelo ID
     @Override
     public void removerDepartamentoPorId(Integer id) {
-        try {
-            String sql = "DELETE FROM departamento WHERE id = ?";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setInt(1, id);
+        String sql = "DELETE FROM departamento WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
 
-                preparedStatement.executeUpdate();
-            }
-        }
-        catch (SQLException e) {
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
             throw new DbException(e.getMessage());
         }
     }
 
     @Override
     public Departamento encontrarDepartamentoPorId(Integer id) {
-        try {
-            String sql = "SELECT * FROM departamento WHERE id = ?";
+        String sql = "SELECT * FROM departamento WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
 
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setInt(1, id);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                Departamento departamento = new Departamento();
+                if (resultSet.next()) {
+                    departamento.setId(resultSet.getInt("id"));
+                    departamento.setNome(resultSet.getString("nome"));
+                    return departamento;
 
-                try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    Departamento departamento = new Departamento();
-                    if (resultSet.next()) {
-                        departamento.setId(resultSet.getInt("id"));
-                        departamento.setNome(resultSet.getString("nome"));
-                        return departamento;
-
-                    }
-                    return null;
                 }
+                return null;
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new DbException(e.getMessage());
         }
     }
 
     @Override
     public List<Departamento> todosDepartamentos() {
-        try {
-            String sql = "SELECT * FROM departamento";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                 ResultSet resultSet = preparedStatement.executeQuery()) {
-                    List<Departamento> listaDepartamentos = new ArrayList<>();
-                    while (resultSet.next()) {
-                        Departamento departamento = new Departamento();
-                        departamento.setId(resultSet.getInt("id"));
-                        departamento.setNome(resultSet.getString("nome"));
-                        listaDepartamentos.add(departamento);
-                    }
-                    return listaDepartamentos;
+        String sql = "SELECT * FROM departamento";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            List<Departamento> listaDepartamentos = new ArrayList<>();
+            while (resultSet.next()) {
+                Departamento departamento = new Departamento();
+                departamento.setId(resultSet.getInt("id"));
+                departamento.setNome(resultSet.getString("nome"));
+                listaDepartamentos.add(departamento);
             }
-        }
-        catch (SQLException e) {
+            return listaDepartamentos;
+        } catch (SQLException e) {
             throw new DbException(e.getMessage());
         }
     }
