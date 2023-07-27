@@ -4,6 +4,7 @@ import db.DbException;
 import model.dao.ClienteDao;
 import model.entities.Cliente;
 import model.entities.Departamento;
+import model.services.InstanciarEntidades;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -96,15 +97,9 @@ public class ClienteDaoJDBC implements ClienteDao {
                 preparedStatement.setInt(1, id);
 
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    Cliente cliente = new Cliente();
+                    Cliente cliente;
                     if (resultSet.next()) {
-                        cliente.setId(resultSet.getInt("id"));
-                        cliente.setClienteCpf(resultSet.getString("clienteCpf"));
-                        cliente.setNome(resultSet.getString("nome"));
-                        cliente.setEmail(resultSet.getString("email"));
-                        cliente.setCelular(resultSet.getString("celular"));
-                        cliente.setContaBanco(resultSet.getString("contaBanco"));
-                        cliente.setEndereco(resultSet.getString("endereco"));
+                        cliente = InstanciarEntidades.instanciarCliente(resultSet);
                         return cliente;
 
                     }
@@ -126,15 +121,9 @@ public class ClienteDaoJDBC implements ClienteDao {
                 preparedStatement.setString(1, cpf);
 
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    Cliente cliente = new Cliente();
+                    Cliente cliente;
                     if (resultSet.next()) {
-                        cliente.setId(resultSet.getInt("id"));
-                        cliente.setClienteCpf(resultSet.getString("clienteCpf"));
-                        cliente.setNome(resultSet.getString("nome"));
-                        cliente.setEmail(resultSet.getString("email"));
-                        cliente.setCelular(resultSet.getString("celular"));
-                        cliente.setContaBanco(resultSet.getString("contaBanco"));
-                        cliente.setEndereco(resultSet.getString("endereco"));
+                        cliente = InstanciarEntidades.instanciarCliente(resultSet);
                         return cliente;
 
                     }
@@ -150,19 +139,12 @@ public class ClienteDaoJDBC implements ClienteDao {
     @Override
     public List<Cliente> todosClientes() {
         try {
-            String sql = "SELECT * FROM cliente";
+            String sql = "SELECT * FROM cliente ORDER BY cliente.id";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql);
                  ResultSet resultSet = preparedStatement.executeQuery()) {
                 List<Cliente> listaCliente = new ArrayList<>();
                 while (resultSet.next()) {
-                    Cliente cliente = new Cliente();
-                    cliente.setId(resultSet.getInt("id"));
-                    cliente.setClienteCpf(resultSet.getString("clienteCpf"));
-                    cliente.setNome(resultSet.getString("nome"));
-                    cliente.setEmail(resultSet.getString("email"));
-                    cliente.setCelular(resultSet.getString("celular"));
-                    cliente.setContaBanco(resultSet.getString("contaBanco"));
-                    cliente.setEndereco(resultSet.getString("endereco"));
+                    Cliente cliente = InstanciarEntidades.instanciarCliente(resultSet);
                     listaCliente.add(cliente);
                 }
                 return listaCliente;

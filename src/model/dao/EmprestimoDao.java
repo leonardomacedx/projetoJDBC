@@ -11,10 +11,10 @@ public interface EmprestimoDao {
 
     void inserirEmprestimo(Emprestimo emprestimo);
     void atualizarEmprestimo(Emprestimo emprestimo);
-    void removerEmprestimo(Emprestimo emprestimo);
+    void removerEmprestimo(Integer id);
     Emprestimo emprestimoPorId(Integer id);
-    List<Emprestimo> emprestimoPorDepartamento(Departamento departamento);
-    List<Emprestimo> emprestimoPorCliente(Cliente cliente);
-    List<Emprestimo> emprestimoPorFuncionario(Funcionario funcionario);
+    List<Emprestimo> emprestimoPorDepartamento(Integer idDepartamento);
+    List<Emprestimo> emprestimoPorCliente(Integer idCliente);
+    List<Emprestimo> emprestimoPorFuncionario(Integer idFuncionario);
     List<Emprestimo> todosEmprestimos();
 }

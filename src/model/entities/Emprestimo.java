@@ -61,6 +61,9 @@ public class Emprestimo {
         return valorTotal;
     }
 
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
 
     public Date getDataEmprestimo() {
         return dataEmprestimo;

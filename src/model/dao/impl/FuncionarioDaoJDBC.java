@@ -4,6 +4,7 @@ import db.DbException;
 import model.dao.FuncionarioDao;
 import model.entities.Departamento;
 import model.entities.Funcionario;
+import model.services.InstanciarEntidades;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -75,7 +76,7 @@ public class FuncionarioDaoJDBC implements FuncionarioDao {
 
     @Override
     public Funcionario encontrarFuncionarioId(Integer id) {
-        String sql = "select funcionario.*, departamento.nome as nomeDepartamento " +
+        String sql = "select funcionario.*, departamento.* " +
                 "from funcionario " +
                 "INNER JOIN departamento " +
                 "ON idDepartamento = departamento.id " +
@@ -86,8 +87,8 @@ public class FuncionarioDaoJDBC implements FuncionarioDao {
 
             try (ResultSet resultSet = preparedStatement.executeQuery()){
                 if (resultSet.next()) {
-                    Departamento departamento = instanciarDepartamento(resultSet);
-                    return instanciarFuncionario(resultSet, departamento);
+                    Departamento departamento = InstanciarEntidades.instanciarDepartamento(resultSet);
+                    return InstanciarEntidades.instanciarFuncionario(resultSet, departamento);
                 }
                 return null;
             }
@@ -99,19 +100,20 @@ public class FuncionarioDaoJDBC implements FuncionarioDao {
 
     @Override
     public List<Funcionario> funcionariosDepartamento(Integer idDepartamento) {
-        String sql = "select funcionario.*, departamento.nome as nomeDepartamento " +
+        String sql = "select funcionario.*, departamento.* " +
                 "from funcionario " +
                 "INNER JOIN departamento " +
                 "ON idDepartamento = departamento.id " +
-                "WHERE idDepartamento = ?";
+                "WHERE idDepartamento = ? " +
+                "ORDER BY funcionario.id";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, idDepartamento);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 List<Funcionario> listaFuncionarios = new ArrayList<>();
                 while (resultSet.next()) {
-                    Departamento departamento = instanciarDepartamento(resultSet);
-                    Funcionario funcionario = instanciarFuncionario(resultSet, departamento);
+                    Departamento departamento = InstanciarEntidades.instanciarDepartamento(resultSet);
+                    Funcionario funcionario = InstanciarEntidades.instanciarFuncionario(resultSet, departamento);
                     listaFuncionarios.add(funcionario);
                 }
                 return listaFuncionarios;
@@ -124,24 +126,25 @@ public class FuncionarioDaoJDBC implements FuncionarioDao {
 
     @Override
     public List<Funcionario> todosFuncionarios() {
-        String sql = "select funcionario.*, departamento.nome as nomeDepartamento " +
+        String sql = "select funcionario.*, departamento.* " +
                 "from funcionario " +
                 "INNER JOIN departamento " +
-                "ON idDepartamento = departamento.id";
+                "ON idDepartamento = departamento.id " +
+                "ORDER BY funcionario.id";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql); ResultSet resultSet
                 = preparedStatement.executeQuery()) {
             List<Funcionario> listaFuncionarios = new ArrayList<>();
-            //Map criado para evitar criar vários departamentos iguais
+            //Map usado para evitar criar vários departamentos iguais
             Map<Integer, Departamento> mapDepartamentos = new HashMap<>();
 
             while (resultSet.next()) {
                 Departamento departamento = mapDepartamentos.get(resultSet.getInt("idDepartamento"));
                 if (departamento == null) {
-                    departamento = instanciarDepartamento(resultSet);
+                    departamento = InstanciarEntidades.instanciarDepartamento(resultSet);
                     mapDepartamentos.put(resultSet.getInt("idDepartamento"), departamento);
                 }
 
-                Funcionario funcionario = instanciarFuncionario(resultSet, departamento);
+                Funcionario funcionario = InstanciarEntidades.instanciarFuncionario(resultSet, departamento);
                 listaFuncionarios.add(funcionario);
             }
             return listaFuncionarios;
@@ -152,23 +155,4 @@ public class FuncionarioDaoJDBC implements FuncionarioDao {
 
     }
 
-    //Método que instancia um funcionário com um departamento
-    private Funcionario instanciarFuncionario(ResultSet resultSet, Departamento departamento) throws SQLException {
-        Funcionario funcionario = new Funcionario();
-        funcionario.setId(resultSet.getInt("id"));
-        funcionario.setNome(resultSet.getString("nome"));
-        funcionario.setEmail(resultSet.getString("email"));
-        funcionario.setDepartamento(departamento);
-        return funcionario;
-
-    }
-
-    //Método que instancia um departamento
-    private Departamento instanciarDepartamento(ResultSet resultSet) throws SQLException {
-        Departamento departamento = new Departamento();
-        departamento.setId(resultSet.getInt("idDepartamento"));
-        departamento.setNome(resultSet.getString("nomeDepartamento"));
-        return departamento;
-
-    }
 }

@@ -55,8 +55,8 @@ public class TesteFuncionario {
         System.out.println();
 
         System.out.println("=== Teste 6 ===");
-        listaFuncionarios = funcionarioDao.todosFuncionarios();
-        for (Funcionario funcionarios : listaFuncionarios) {
+        List<Funcionario> listaFuncionarios1 = funcionarioDao.todosFuncionarios();
+        for (Funcionario funcionarios : listaFuncionarios1) {
             System.out.println(funcionarios);
         }
         System.out.println();

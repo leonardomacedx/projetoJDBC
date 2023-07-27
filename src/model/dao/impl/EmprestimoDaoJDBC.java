@@ -51,31 +51,80 @@ public class EmprestimoDaoJDBC implements EmprestimoDao {
 
     @Override
     public void atualizarEmprestimo(Emprestimo emprestimo) {
+        String sql = "UPDATE emprestimo SET valor = ?, parcelas = ?, valorTotal = ?, " +
+                "dataEmprestimo = ?, idDepartamento = ?, idCliente = ?, idFuncionario = ? " +
+                "WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setDouble(1, emprestimo.getValor());
+            preparedStatement.setInt(2, emprestimo.getParcelas());
+            preparedStatement.setDouble(3, emprestimo.getValorTotal());
+            preparedStatement.setDate(4, new Date(emprestimo.getDataEmprestimo().getTime()));
+            preparedStatement.setInt(5, emprestimo.getDepartamento().getId());
+            preparedStatement.setInt(6, emprestimo.getCliente().getId());
+            preparedStatement.setInt(7, emprestimo.getFuncionario().getId());
+            preparedStatement.setInt(8, emprestimo.getId());
 
+            preparedStatement.executeUpdate();
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
     }
 
     @Override
-    public void removerEmprestimo(Emprestimo emprestimo) {
+    public void removerEmprestimo(Integer id) {
+        String sql = "DELETE FROM emprestimo WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
 
+            preparedStatement.executeUpdate();
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
     }
 
     @Override
     public Emprestimo emprestimoPorId(Integer id) {
+        String sql = """
+                select emprestimo.*, funcionario.*, cliente.*, departamento.*  
+                from emprestimo 
+                inner join cliente
+                on emprestimo.idCliente = cliente.id
+                inner join departamento
+                on emprestimo.idDepartamento = departamento.id
+                inner join funcionario
+                on emprestimo.idFuncionario = funcionario.id
+                where emprestimo.id = ?
+                order by emprestimo.id""";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+
+            try(ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    Emprestimo emprestimo = new Emprestimo();
+
+                }
+            }
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
         return null;
     }
 
     @Override
-    public List<Emprestimo> emprestimoPorDepartamento(Departamento departamento) {
+    public List<Emprestimo> emprestimoPorDepartamento(Integer idDepartamento) {
         return null;
     }
 
     @Override
-    public List<Emprestimo> emprestimoPorCliente(Cliente cliente) {
+    public List<Emprestimo> emprestimoPorCliente(Integer idCliente) {
         return null;
     }
 
     @Override
-    public List<Emprestimo> emprestimoPorFuncionario(Funcionario funcionario) {
+    public List<Emprestimo> emprestimoPorFuncionario(Integer idFuncionario) {
         return null;
     }
 

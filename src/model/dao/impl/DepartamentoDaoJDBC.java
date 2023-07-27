@@ -3,6 +3,7 @@ package model.dao.impl;
 import db.DbException;
 import model.dao.DepartamentoDao;
 import model.entities.Departamento;
+import model.services.InstanciarEntidades;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -72,10 +73,9 @@ public class DepartamentoDaoJDBC implements DepartamentoDao {
             preparedStatement.setInt(1, id);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                Departamento departamento = new Departamento();
+                Departamento departamento;
                 if (resultSet.next()) {
-                    departamento.setId(resultSet.getInt("id"));
-                    departamento.setNome(resultSet.getString("nome"));
+                    departamento = InstanciarEntidades.instanciarDepartamento(resultSet);
                     return departamento;
 
                 }
@@ -88,14 +88,12 @@ public class DepartamentoDaoJDBC implements DepartamentoDao {
 
     @Override
     public List<Departamento> todosDepartamentos() {
-        String sql = "SELECT * FROM departamento";
+        String sql = "SELECT * FROM departamento ORDER BY departamento.id";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql);
              ResultSet resultSet = preparedStatement.executeQuery()) {
             List<Departamento> listaDepartamentos = new ArrayList<>();
             while (resultSet.next()) {
-                Departamento departamento = new Departamento();
-                departamento.setId(resultSet.getInt("id"));
-                departamento.setNome(resultSet.getString("nome"));
+                Departamento departamento = InstanciarEntidades.instanciarDepartamento(resultSet);
                 listaDepartamentos.add(departamento);
             }
             return listaDepartamentos;
