@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62c8afb5-07b7-48f9-84ee-bd3b7c3e5ddd" name="Changes" comment="inserirFuncionario e atualizarFuncionario testado">
+    <list default="true" id="62c8afb5-07b7-48f9-84ee-bd3b7c3e5ddd" name="Changes" comment="FuncionarioDaoJDBC implementado e testado">
+      <change afterPath="$PROJECT_DIR$/src/application/testes/TesteEmprestimo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/dao/impl/EmprestimoDaoJDBC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/testes/TesteFuncionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/testes/TesteFuncionario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/dao/FuncionarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/dao/FuncionarioDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/dao/impl/FuncionarioDaoJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/dao/impl/FuncionarioDaoJDBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/dao/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/dao/DaoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/entities/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/entities/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/entities/Departamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/entities/Departamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/entities/Emprestimo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/entities/Emprestimo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/entities/Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/entities/Funcionario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +87,9 @@
       <workItem from="1690251331477" duration="78000" />
       <workItem from="1690292047514" duration="4513000" />
       <workItem from="1690324161013" duration="280000" />
-      <workItem from="1690377531581" duration="15746000" />
+      <workItem from="1690377531581" duration="16693000" />
+      <workItem from="1690416712446" duration="662000" />
+      <workItem from="1690462994146" duration="8370000" />
     </task>
     <task id="LOCAL-00001" summary="Inicializando repositório com as entidades criadas">
       <option name="closed" value="true" />
@@ -157,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690387396193</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="FuncionarioDaoJDBC implementado e testado">
+      <option name="closed" value="true" />
+      <created>1690407937330</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1690407937330</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +190,18 @@
     <MESSAGE value="ClienteDaoJDBC implementado" />
     <MESSAGE value="ClienteDaoJDBC testado" />
     <MESSAGE value="inserirFuncionario e atualizarFuncionario testado" />
-    <option name="LAST_COMMIT_MESSAGE" value="inserirFuncionario e atualizarFuncionario testado" />
+    <MESSAGE value="FuncionarioDaoJDBC implementado e testado" />
+    <option name="LAST_COMMIT_MESSAGE" value="FuncionarioDaoJDBC implementado e testado" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk-19/lib/src.zip!/java.base/java/util/Date.java</url>
+          <line>162</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -15,6 +15,10 @@ public class Cliente {
     public Cliente() {
     }
 
+    public Cliente(Integer id) {
+        this.id = id;
+    }
+
     public Cliente(Integer id, String clienteCpf, String nome, String email, String celular, String contaBanco, String endereco) {
         this.id = id;
         this.clienteCpf = clienteCpf;

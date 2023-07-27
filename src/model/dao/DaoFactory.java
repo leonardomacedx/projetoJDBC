@@ -3,6 +3,7 @@ package model.dao;
 import db.DB;
 import model.dao.impl.ClienteDaoJDBC;
 import model.dao.impl.DepartamentoDaoJDBC;
+import model.dao.impl.EmprestimoDaoJDBC;
 import model.dao.impl.FuncionarioDaoJDBC;
 
 public class DaoFactory {
@@ -20,6 +21,6 @@ public class DaoFactory {
     }
 
     public static EmprestimoDao createEmprestimoDao() {
-        return null;
+        return new EmprestimoDaoJDBC(DB.getConnection());
     }
 }

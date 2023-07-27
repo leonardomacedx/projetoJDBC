@@ -1,6 +1,9 @@
 package model.entities;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 public class Emprestimo {
@@ -14,6 +17,8 @@ public class Emprestimo {
     private Cliente cliente;
     private Funcionario funcionario;
 
+    DecimalFormat formato = new DecimalFormat("#.00", new DecimalFormatSymbols(Locale.US));
+
     public Emprestimo() {
     }
 
@@ -25,6 +30,7 @@ public class Emprestimo {
         this.departamento = departamento;
         this.cliente = cliente;
         this.funcionario = funcionario;
+        this.valorTotal = Double.parseDouble(formato.format(valor * Math.pow(1.02, parcelas)));
     }
 
     public Integer getId() {
@@ -55,10 +61,6 @@ public class Emprestimo {
         return valorTotal;
     }
 
-
-    public void setValorTotal() {
-        valorTotal = valor * (1 + (0.02 * parcelas));
-    }
 
     public Date getDataEmprestimo() {
         return dataEmprestimo;

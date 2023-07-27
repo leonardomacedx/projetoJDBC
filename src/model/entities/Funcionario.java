@@ -12,6 +12,10 @@ public class Funcionario {
     public Funcionario() {
     }
 
+    public Funcionario(Integer id) {
+        this.id = id;
+    }
+
     public Funcionario(Integer id, String nome, String email, Departamento departamento) {
         this.id = id;
         this.nome = nome;

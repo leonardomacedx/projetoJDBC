@@ -10,6 +10,10 @@ public class Departamento {
     public Departamento() {
     }
 
+    public Departamento(Integer id) {
+        this.id = id;
+    }
+
     public Departamento(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
