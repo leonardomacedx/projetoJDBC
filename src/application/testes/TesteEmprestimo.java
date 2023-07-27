@@ -7,18 +7,54 @@ import model.entities.Departamento;
 import model.entities.Emprestimo;
 import model.entities.Funcionario;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Scanner;
 
 public class TesteEmprestimo {
     public static void main(String[] args) {
 
+        Scanner scanner = new Scanner(System.in);
+
         EmprestimoDao emprestimoDao = DaoFactory.createEmprestimoDao();
 
-        System.out.println("=== Teste 1 ===");
-        Emprestimo emprestimo = new Emprestimo(null, 96650.0, 8, new Date(),
+        System.out.println("=== Teste 1 - Inserir ===");
+        Emprestimo emprestimo = new Emprestimo(null, 96650.0, 8, LocalDate.now(),
                 new Departamento(2),
-                new Cliente(3), new Funcionario(4));
+                new Cliente(3), new Funcionario(7));
         emprestimoDao.inserirEmprestimo(emprestimo);
         System.out.println("Empréstimo adicionado!");
+        System.out.println();
+
+        System.out.println("=== Teste 2 - Atualizar ===");
+        Emprestimo emprestimo1 = new Emprestimo(2, 140560.0, 30,
+                LocalDate.of(2012,12, 2),
+                new Departamento(3),
+                new Cliente(1), new Funcionario(9));
+        emprestimoDao.atualizarEmprestimo(emprestimo1);
+        System.out.println("Empréstimo atualizado!");
+        System.out.println();
+
+        System.out.println("=== Teste 3 - Remover ===");
+        System.out.print("Id para remoção: ");
+        int id = scanner.nextInt();
+        emprestimoDao.removerEmprestimo(id);
+        System.out.println("Empréstimo excluido!");
+        System.out.println();
+
+        System.out.println("=== Teste 4 - Retorno por id do empréstimo");
+        System.out.print("Id do empréstimo: ");
+        int idEmprestimo = scanner.nextInt();
+        System.out.println(emprestimoDao.emprestimoPorId(idEmprestimo));
+        System.out.println();
+
+        System.out.println("=== Teste 5 - Emprestimos por departamento");
+        System.out.print("Id do departamento: ");
+        int idDepartamento = scanner.nextInt();
+        List<Emprestimo> listaEmprestimosDep = emprestimoDao.emprestimoPorDepartamento(idDepartamento);
+        for (Emprestimo emprestimoDep : listaEmprestimosDep) {
+            System.out.println(emprestimoDep);
+        }
+        System.out.println();
     }
 }

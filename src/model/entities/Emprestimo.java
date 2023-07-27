@@ -2,7 +2,7 @@ package model.entities;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -12,7 +12,7 @@ public class Emprestimo {
     private Double valor;
     private Integer parcelas;
     private Double valorTotal;
-    private Date dataEmprestimo;
+    private LocalDate dataEmprestimo;
     private Departamento departamento;
     private Cliente cliente;
     private Funcionario funcionario;
@@ -22,7 +22,7 @@ public class Emprestimo {
     public Emprestimo() {
     }
 
-    public Emprestimo(Integer id, Double valor, Integer parcelas, Date dataEmprestimo, Departamento departamento, Cliente cliente, Funcionario funcionario) {
+    public Emprestimo(Integer id, Double valor, Integer parcelas, LocalDate dataEmprestimo, Departamento departamento, Cliente cliente, Funcionario funcionario) {
         this.id = id;
         this.valor = valor;
         this.parcelas = parcelas;
@@ -65,11 +65,11 @@ public class Emprestimo {
         this.valorTotal = valorTotal;
     }
 
-    public Date getDataEmprestimo() {
+    public LocalDate getDataEmprestimo() {
         return dataEmprestimo;
     }
 
-    public void setDataEmprestimo(Date dataEmprestimo) {
+    public void setDataEmprestimo(LocalDate dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
     }
 

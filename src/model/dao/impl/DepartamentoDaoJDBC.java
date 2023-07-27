@@ -75,7 +75,7 @@ public class DepartamentoDaoJDBC implements DepartamentoDao {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 Departamento departamento;
                 if (resultSet.next()) {
-                    departamento = InstanciarEntidades.instanciarDepartamento(resultSet);
+                    departamento = InstanciarEntidades.departamento(resultSet);
                     return departamento;
 
                 }
@@ -93,7 +93,7 @@ public class DepartamentoDaoJDBC implements DepartamentoDao {
              ResultSet resultSet = preparedStatement.executeQuery()) {
             List<Departamento> listaDepartamentos = new ArrayList<>();
             while (resultSet.next()) {
-                Departamento departamento = InstanciarEntidades.instanciarDepartamento(resultSet);
+                Departamento departamento = InstanciarEntidades.departamento(resultSet);
                 listaDepartamentos.add(departamento);
             }
             return listaDepartamentos;

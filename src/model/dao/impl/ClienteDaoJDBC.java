@@ -3,7 +3,6 @@ package model.dao.impl;
 import db.DbException;
 import model.dao.ClienteDao;
 import model.entities.Cliente;
-import model.entities.Departamento;
 import model.services.InstanciarEntidades;
 
 import java.sql.*;
@@ -99,7 +98,7 @@ public class ClienteDaoJDBC implements ClienteDao {
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     Cliente cliente;
                     if (resultSet.next()) {
-                        cliente = InstanciarEntidades.instanciarCliente(resultSet);
+                        cliente = InstanciarEntidades.cliente(resultSet);
                         return cliente;
 
                     }
@@ -123,7 +122,7 @@ public class ClienteDaoJDBC implements ClienteDao {
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     Cliente cliente;
                     if (resultSet.next()) {
-                        cliente = InstanciarEntidades.instanciarCliente(resultSet);
+                        cliente = InstanciarEntidades.cliente(resultSet);
                         return cliente;
 
                     }
@@ -144,7 +143,7 @@ public class ClienteDaoJDBC implements ClienteDao {
                  ResultSet resultSet = preparedStatement.executeQuery()) {
                 List<Cliente> listaCliente = new ArrayList<>();
                 while (resultSet.next()) {
-                    Cliente cliente = InstanciarEntidades.instanciarCliente(resultSet);
+                    Cliente cliente = InstanciarEntidades.cliente(resultSet);
                     listaCliente.add(cliente);
                 }
                 return listaCliente;

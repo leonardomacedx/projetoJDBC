@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class InstanciarEntidades {
 
-    public static Funcionario instanciarFuncionario(ResultSet resultSet, Departamento departamento) throws SQLException {
+    public static Funcionario funcionario(ResultSet resultSet, Departamento departamento) throws SQLException {
         Funcionario funcionario = new Funcionario();
         funcionario.setId(resultSet.getInt("funcionario.id"));
         funcionario.setNome(resultSet.getString("funcionario.nome"));
@@ -19,14 +19,14 @@ public class InstanciarEntidades {
         return funcionario;
     }
 
-    public static Departamento instanciarDepartamento(ResultSet resultSet) throws SQLException {
+    public static Departamento departamento(ResultSet resultSet) throws SQLException {
         Departamento departamento = new Departamento();
         departamento.setId(resultSet.getInt("departamento.id"));
         departamento.setNome(resultSet.getString("departamento.nome"));
         return departamento;
     }
 
-    public static Cliente instanciarCliente(ResultSet resultSet) throws SQLException {
+    public static Cliente cliente(ResultSet resultSet) throws SQLException {
         Cliente cliente = new Cliente();
         cliente.setId(resultSet.getInt("cliente.id"));
         cliente.setClienteCpf(resultSet.getString("cliente.clienteCpf"));
@@ -38,7 +38,7 @@ public class InstanciarEntidades {
         return cliente;
     }
 
-    public static Emprestimo instanciarEmprestimo(
+    public static Emprestimo emprestimo(
             ResultSet resultSet, Cliente cliente, Departamento departamento, Funcionario funcionario)
             throws SQLException{
         Emprestimo emprestimo = new Emprestimo();
@@ -46,7 +46,7 @@ public class InstanciarEntidades {
         emprestimo.setValor(resultSet.getDouble("emprestimo.valor"));
         emprestimo.setParcelas(resultSet.getInt("emprestimo.parcelas"));
         emprestimo.setValorTotal(resultSet.getDouble("emprestimo.valorTotal"));
-        emprestimo.setDataEmprestimo(resultSet.getDate("emprestimo.dataEmprestimo"));
+        emprestimo.setDataEmprestimo((resultSet.getDate("emprestimo.dataEmprestimo")).toLocalDate());
         emprestimo.setDepartamento(departamento);
         emprestimo.setCliente(cliente);
         emprestimo.setFuncionario(funcionario);

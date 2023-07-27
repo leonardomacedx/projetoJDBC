@@ -87,8 +87,8 @@ public class FuncionarioDaoJDBC implements FuncionarioDao {
 
             try (ResultSet resultSet = preparedStatement.executeQuery()){
                 if (resultSet.next()) {
-                    Departamento departamento = InstanciarEntidades.instanciarDepartamento(resultSet);
-                    return InstanciarEntidades.instanciarFuncionario(resultSet, departamento);
+                    Departamento departamento = InstanciarEntidades.departamento(resultSet);
+                    return InstanciarEntidades.funcionario(resultSet, departamento);
                 }
                 return null;
             }
@@ -112,8 +112,8 @@ public class FuncionarioDaoJDBC implements FuncionarioDao {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 List<Funcionario> listaFuncionarios = new ArrayList<>();
                 while (resultSet.next()) {
-                    Departamento departamento = InstanciarEntidades.instanciarDepartamento(resultSet);
-                    Funcionario funcionario = InstanciarEntidades.instanciarFuncionario(resultSet, departamento);
+                    Departamento departamento = InstanciarEntidades.departamento(resultSet);
+                    Funcionario funcionario = InstanciarEntidades.funcionario(resultSet, departamento);
                     listaFuncionarios.add(funcionario);
                 }
                 return listaFuncionarios;
@@ -134,17 +134,17 @@ public class FuncionarioDaoJDBC implements FuncionarioDao {
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql); ResultSet resultSet
                 = preparedStatement.executeQuery()) {
             List<Funcionario> listaFuncionarios = new ArrayList<>();
-            //Map usado para evitar criar vários departamentos iguais
+            //"Map" usado para evitar criar vários departamentos iguais
             Map<Integer, Departamento> mapDepartamentos = new HashMap<>();
 
             while (resultSet.next()) {
                 Departamento departamento = mapDepartamentos.get(resultSet.getInt("idDepartamento"));
                 if (departamento == null) {
-                    departamento = InstanciarEntidades.instanciarDepartamento(resultSet);
+                    departamento = InstanciarEntidades.departamento(resultSet);
                     mapDepartamentos.put(resultSet.getInt("idDepartamento"), departamento);
                 }
 
-                Funcionario funcionario = InstanciarEntidades.instanciarFuncionario(resultSet, departamento);
+                Funcionario funcionario = InstanciarEntidades.funcionario(resultSet, departamento);
                 listaFuncionarios.add(funcionario);
             }
             return listaFuncionarios;

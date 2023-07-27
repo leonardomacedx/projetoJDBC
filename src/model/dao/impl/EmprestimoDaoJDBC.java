@@ -6,9 +6,13 @@ import model.entities.Cliente;
 import model.entities.Departamento;
 import model.entities.Emprestimo;
 import model.entities.Funcionario;
+import model.services.InstanciarEntidades;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EmprestimoDaoJDBC implements EmprestimoDao {
 
@@ -28,7 +32,7 @@ public class EmprestimoDaoJDBC implements EmprestimoDao {
             preparedStatement.setDouble(1, emprestimo.getValor());
             preparedStatement.setInt(2, emprestimo.getParcelas());
             preparedStatement.setDouble(3, emprestimo.getValorTotal());
-            preparedStatement.setDate(4, new Date(emprestimo.getDataEmprestimo().getTime()));
+            preparedStatement.setDate(4, Date.valueOf(emprestimo.getDataEmprestimo()));
             preparedStatement.setInt(5, emprestimo.getDepartamento().getId());
             preparedStatement.setInt(6, emprestimo.getCliente().getId());
             preparedStatement.setInt(7, emprestimo.getFuncionario().getId());
@@ -58,7 +62,7 @@ public class EmprestimoDaoJDBC implements EmprestimoDao {
             preparedStatement.setDouble(1, emprestimo.getValor());
             preparedStatement.setInt(2, emprestimo.getParcelas());
             preparedStatement.setDouble(3, emprestimo.getValorTotal());
-            preparedStatement.setDate(4, new Date(emprestimo.getDataEmprestimo().getTime()));
+            preparedStatement.setDate(4, Date.valueOf(emprestimo.getDataEmprestimo()));
             preparedStatement.setInt(5, emprestimo.getDepartamento().getId());
             preparedStatement.setInt(6, emprestimo.getCliente().getId());
             preparedStatement.setInt(7, emprestimo.getFuncionario().getId());
@@ -87,8 +91,8 @@ public class EmprestimoDaoJDBC implements EmprestimoDao {
     @Override
     public Emprestimo emprestimoPorId(Integer id) {
         String sql = """
-                select emprestimo.*, funcionario.*, cliente.*, departamento.*  
-                from emprestimo 
+                select emprestimo.*, funcionario.*, cliente.*, departamento.*
+                from emprestimo
                 inner join cliente
                 on emprestimo.idCliente = cliente.id
                 inner join departamento
@@ -102,20 +106,66 @@ public class EmprestimoDaoJDBC implements EmprestimoDao {
 
             try(ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    Emprestimo emprestimo = new Emprestimo();
-
+                    Departamento departamento = InstanciarEntidades.departamento(resultSet);
+                    Cliente cliente = InstanciarEntidades.cliente(resultSet);
+                    Funcionario funcionario = InstanciarEntidades.funcionario(resultSet, departamento);
+                    return InstanciarEntidades.emprestimo(resultSet, cliente,
+                            departamento, funcionario);
                 }
+                return null;
             }
         }
         catch (SQLException e) {
             throw new DbException(e.getMessage());
         }
-        return null;
     }
 
     @Override
     public List<Emprestimo> emprestimoPorDepartamento(Integer idDepartamento) {
-        return null;
+        String sql = """
+                select emprestimo.*, funcionario.*, cliente.*, departamento.*
+                from emprestimo
+                inner join cliente
+                on emprestimo.idCliente = cliente.id
+                inner join departamento
+                on emprestimo.idDepartamento = departamento.id
+                inner join funcionario
+                on emprestimo.idFuncionario = funcionario.id
+                where departamento.id = ?
+                order by emprestimo.id""";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, idDepartamento);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                List<Emprestimo> listaEmprestimos = new ArrayList<>();
+                Map<Integer, Funcionario> funcionarioMap = new HashMap<>();
+                Map<Integer, Cliente> clienteMap = new HashMap<>();
+
+                while (resultSet.next()) {
+                    Departamento departamento = InstanciarEntidades.departamento(resultSet);
+
+                    Funcionario funcionario = funcionarioMap.get(resultSet.getInt("funcionario.id"));
+                    if (funcionario == null) {
+                        funcionario = InstanciarEntidades.funcionario(resultSet, departamento);
+                        funcionarioMap.put(resultSet.getInt("funcionario.id"), funcionario);
+                    }
+
+                    Cliente cliente = clienteMap.get(resultSet.getInt("cliente.id"));
+                    if (cliente == null) {
+                        cliente = InstanciarEntidades.cliente(resultSet);
+                        clienteMap.put(resultSet.getInt("cliente.id"), cliente);
+                    }
+
+                    Emprestimo emprestimo = InstanciarEntidades.emprestimo(
+                            resultSet, cliente, departamento, funcionario);
+                    listaEmprestimos.add(emprestimo);
+                }
+                return listaEmprestimos;
+            }
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
     }
 
     @Override
