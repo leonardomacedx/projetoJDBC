@@ -19,9 +19,9 @@ public class TesteEmprestimo {
         EmprestimoDao emprestimoDao = DaoFactory.createEmprestimoDao();
 
         System.out.println("=== Teste 1 - Inserir ===");
-        Emprestimo emprestimo = new Emprestimo(null, 96650.0, 8, LocalDate.now(),
+        Emprestimo emprestimo = new Emprestimo(null, 63544.0, 17, LocalDate.now(),
                 new Departamento(2),
-                new Cliente(3), new Funcionario(7));
+                new Cliente(3), new Funcionario(4));
         emprestimoDao.inserirEmprestimo(emprestimo);
         System.out.println("Empréstimo adicionado!");
         System.out.println();

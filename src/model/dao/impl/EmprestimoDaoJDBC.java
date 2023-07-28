@@ -141,20 +141,13 @@ public class EmprestimoDaoJDBC implements EmprestimoDao {
                 Map<Integer, Funcionario> funcionarioMap = new HashMap<>();
                 Map<Integer, Cliente> clienteMap = new HashMap<>();
 
+
                 while (resultSet.next()) {
                     Departamento departamento = InstanciarEntidades.departamento(resultSet);
 
-                    Funcionario funcionario = funcionarioMap.get(resultSet.getInt("funcionario.id"));
-                    if (funcionario == null) {
-                        funcionario = InstanciarEntidades.funcionario(resultSet, departamento);
-                        funcionarioMap.put(resultSet.getInt("funcionario.id"), funcionario);
-                    }
+                    Funcionario funcionario = criarMapFuncionario(funcionarioMap, resultSet, departamento);
 
-                    Cliente cliente = clienteMap.get(resultSet.getInt("cliente.id"));
-                    if (cliente == null) {
-                        cliente = InstanciarEntidades.cliente(resultSet);
-                        clienteMap.put(resultSet.getInt("cliente.id"), cliente);
-                    }
+                    Cliente cliente = criarMapCliente(clienteMap, resultSet);
 
                     Emprestimo emprestimo = InstanciarEntidades.emprestimo(
                             resultSet, cliente, departamento, funcionario);
@@ -181,5 +174,33 @@ public class EmprestimoDaoJDBC implements EmprestimoDao {
     @Override
     public List<Emprestimo> todosEmprestimos() {
         return null;
+    }
+
+    private Funcionario criarMapFuncionario(Map<Integer, Funcionario> map, ResultSet resultSet,
+                                            Departamento departamento) throws SQLException {
+        Funcionario funcionario= map.get(resultSet.getInt("funcionario.id"));
+        if (funcionario == null) {
+            funcionario = InstanciarEntidades.funcionario(resultSet, departamento);
+            map.put(resultSet.getInt("funcionario.id"), funcionario);
+        }
+        return funcionario;
+    }
+
+    private Cliente criarMapCliente(Map<Integer, Cliente> map, ResultSet resultSet) throws SQLException {
+        Cliente cliente = map.get(resultSet.getInt("cliente.id"));
+        if (cliente == null) {
+            cliente = InstanciarEntidades.cliente(resultSet);
+            map.put(resultSet.getInt("cliente.id"), cliente);
+        }
+        return cliente;
+    }
+
+    private Departamento criarMapDepartamento(Map<Integer, Departamento> map, ResultSet resultSet) throws SQLException{
+        Departamento departamento = map.get(resultSet.getInt("departamento.id"));
+        if (departamento == null) {
+            departamento = InstanciarEntidades.departamento(resultSet);
+            map.put(resultSet.getInt("cliente.id"), departamento);
+        }
+        return departamento;
     }
 }

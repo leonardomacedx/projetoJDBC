@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62c8afb5-07b7-48f9-84ee-bd3b7c3e5ddd" name="Changes" comment="Classe InstanciarEntidades implementada e funcional">
+    <list default="true" id="62c8afb5-07b7-48f9-84ee-bd3b7c3e5ddd" name="Changes" comment="Implementando a classe EmprestimoDaoJDBC">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/testes/TesteEmprestimo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/testes/TesteEmprestimo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/dao/impl/ClienteDaoJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/dao/impl/ClienteDaoJDBC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/dao/impl/DepartamentoDaoJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/dao/impl/DepartamentoDaoJDBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/db/DbException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/DbException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/dao/impl/EmprestimoDaoJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/dao/impl/EmprestimoDaoJDBC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/dao/impl/FuncionarioDaoJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/dao/impl/FuncionarioDaoJDBC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/entities/Emprestimo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/entities/Emprestimo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/services/InstanciarEntidades.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/services/InstanciarEntidades.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +86,9 @@
       <workItem from="1690377531581" duration="16693000" />
       <workItem from="1690416712446" duration="662000" />
       <workItem from="1690462994146" duration="9303000" />
-      <workItem from="1690481303802" duration="12640000" />
+      <workItem from="1690481303802" duration="12780000" />
+      <workItem from="1690550019635" duration="1107000" />
+      <workItem from="1690557738258" duration="5645000" />
     </task>
     <task id="LOCAL-00001" summary="Inicializando repositório com as entidades criadas">
       <option name="closed" value="true" />
@@ -189,7 +186,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690492354031</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Implementando a classe EmprestimoDaoJDBC">
+      <option name="closed" value="true" />
+      <created>1690498300654</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1690498300654</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +216,8 @@
     <MESSAGE value="FuncionarioDaoJDBC implementado e testado" />
     <MESSAGE value="inserirEmprestimo implementado e testado" />
     <MESSAGE value="Classe InstanciarEntidades implementada e funcional" />
-    <option name="LAST_COMMIT_MESSAGE" value="Classe InstanciarEntidades implementada e funcional" />
+    <MESSAGE value="Implementando a classe EmprestimoDaoJDBC" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementando a classe EmprestimoDaoJDBC" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -220,6 +226,11 @@
           <url>jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk-19/lib/src.zip!/java.base/java/util/Date.java</url>
           <line>162</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/application/testes/TesteEmprestimo.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
