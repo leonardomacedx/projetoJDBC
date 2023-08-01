@@ -112,15 +112,13 @@ public class Emprestimo {
 
     @Override
     public String toString() {
-        return "Emprestimo{" +
-                "id=" + id +
-                ", valor=" + valor +
-                ", parcelas=" + parcelas +
-                ", valorTotal=" + valorTotal +
-                ", dataEmprestimo=" + dataEmprestimo +
-                ", departamento=" + departamento +
-                ", cliente=" + cliente +
-                ", funcionario=" + funcionario +
-                '}';
+        return "Empréstimo:\n" +
+                "Id: " + id +
+                ", valor: R$" + String.format("%.2f", valor) +
+                ", parcelas: " + parcelas +
+                ", valor total: " + String.format("%.2f", valorTotal) +
+                ", data: " + dataEmprestimo +
+                "\nCliente:\n" + cliente +
+                "\nFuncionario:\n" + funcionario;
     }
 }

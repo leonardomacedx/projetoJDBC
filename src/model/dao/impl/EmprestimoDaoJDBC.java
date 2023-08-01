@@ -47,8 +47,7 @@ public class EmprestimoDaoJDBC implements EmprestimoDao {
                     }
                 }
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new DbException(e.getMessage());
         }
     }
@@ -69,8 +68,7 @@ public class EmprestimoDaoJDBC implements EmprestimoDao {
             preparedStatement.setInt(8, emprestimo.getId());
 
             preparedStatement.executeUpdate();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new DbException(e.getMessage());
         }
     }
@@ -82,8 +80,7 @@ public class EmprestimoDaoJDBC implements EmprestimoDao {
             preparedStatement.setInt(1, id);
 
             preparedStatement.executeUpdate();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new DbException(e.getMessage());
         }
     }
@@ -104,7 +101,7 @@ public class EmprestimoDaoJDBC implements EmprestimoDao {
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, id);
 
-            try(ResultSet resultSet = preparedStatement.executeQuery()) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
                     Departamento departamento = InstanciarEntidades.departamento(resultSet);
                     Cliente cliente = InstanciarEntidades.cliente(resultSet);
@@ -114,8 +111,7 @@ public class EmprestimoDaoJDBC implements EmprestimoDao {
                 }
                 return null;
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new DbException(e.getMessage());
         }
     }
@@ -155,30 +151,128 @@ public class EmprestimoDaoJDBC implements EmprestimoDao {
                 }
                 return listaEmprestimos;
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new DbException(e.getMessage());
         }
     }
 
     @Override
     public List<Emprestimo> emprestimoPorCliente(Integer idCliente) {
-        return null;
+        String sql = """
+                select emprestimo.*, funcionario.*, cliente.*, departamento.*
+                from emprestimo
+                inner join cliente
+                on emprestimo.idCliente = cliente.id
+                inner join departamento
+                on emprestimo.idDepartamento = departamento.id
+                inner join funcionario
+                on emprestimo.idFuncionario = funcionario.id
+                where cliente.id = ?
+                order by emprestimo.id""";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, idCliente);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                List<Emprestimo> listaEmprestimos = new ArrayList<>();
+                Map<Integer, Funcionario> funcionarioMap = new HashMap<>();
+                Map<Integer, Departamento> departamentoMap = new HashMap<>();
+
+                while (resultSet.next()) {
+                    Departamento departamento = criarMapDepartamento(departamentoMap, resultSet);
+
+                    Funcionario funcionario = criarMapFuncionario(funcionarioMap, resultSet, departamento);
+
+                    Cliente cliente = InstanciarEntidades.cliente(resultSet);
+
+                    Emprestimo emprestimo = InstanciarEntidades.emprestimo(
+                            resultSet, cliente, departamento, funcionario);
+                    listaEmprestimos.add(emprestimo);
+                }
+                return listaEmprestimos;
+            }
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
     }
 
     @Override
     public List<Emprestimo> emprestimoPorFuncionario(Integer idFuncionario) {
-        return null;
+        String sql = """
+                select emprestimo.*, funcionario.*, cliente.*, departamento.*
+                from emprestimo
+                inner join cliente
+                on emprestimo.idCliente = cliente.id
+                inner join departamento
+                on emprestimo.idDepartamento = departamento.id
+                inner join funcionario
+                on emprestimo.idFuncionario = funcionario.id
+                where funcionario.id = ?
+                order by emprestimo.id""";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, idFuncionario);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                List<Emprestimo> listaEmprestimos = new ArrayList<>();
+                Map<Integer, Cliente> clienteMap = new HashMap<>();
+                Map<Integer, Departamento> departamentoMap = new HashMap<>();
+
+                while (resultSet.next()) {
+                    Departamento departamento = criarMapDepartamento(departamentoMap, resultSet);
+
+                    Cliente cliente = criarMapCliente(clienteMap, resultSet);
+
+                    Funcionario funcionario = InstanciarEntidades.funcionario(resultSet, departamento);
+
+                    Emprestimo emprestimo = InstanciarEntidades.emprestimo(
+                            resultSet, cliente, departamento, funcionario);
+                    listaEmprestimos.add(emprestimo);
+                }
+                return listaEmprestimos;
+            }
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
     }
+
 
     @Override
     public List<Emprestimo> todosEmprestimos() {
-        return null;
+        String sql = """
+                select emprestimo.*, funcionario.*, cliente.*, departamento.*
+                from emprestimo
+                inner join cliente
+                on emprestimo.idCliente = cliente.id
+                inner join departamento
+                on emprestimo.idDepartamento = departamento.id
+                inner join funcionario
+                on emprestimo.idFuncionario = funcionario.id
+                order by emprestimo.id""";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            List<Emprestimo> listaEmprestimos = new ArrayList<>();
+            Map<Integer, Cliente> clienteMap = new HashMap<>();
+            Map<Integer, Departamento> departamentoMap = new HashMap<>();
+            Map<Integer, Funcionario> funcionarioMap = new HashMap<>();
+
+            while (resultSet.next()) {
+                Departamento departamento = criarMapDepartamento(departamentoMap, resultSet);
+                Cliente cliente = criarMapCliente(clienteMap, resultSet);
+                Funcionario funcionario = criarMapFuncionario(funcionarioMap, resultSet, departamento);
+
+                Emprestimo emprestimo = InstanciarEntidades.emprestimo(resultSet, cliente, departamento, funcionario);
+                listaEmprestimos.add(emprestimo);
+            }
+            return listaEmprestimos;
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
     }
 
     private Funcionario criarMapFuncionario(Map<Integer, Funcionario> map, ResultSet resultSet,
                                             Departamento departamento) throws SQLException {
-        Funcionario funcionario= map.get(resultSet.getInt("funcionario.id"));
+        Funcionario funcionario = map.get(resultSet.getInt("funcionario.id"));
         if (funcionario == null) {
             funcionario = InstanciarEntidades.funcionario(resultSet, departamento);
             map.put(resultSet.getInt("funcionario.id"), funcionario);
@@ -195,7 +289,7 @@ public class EmprestimoDaoJDBC implements EmprestimoDao {
         return cliente;
     }
 
-    private Departamento criarMapDepartamento(Map<Integer, Departamento> map, ResultSet resultSet) throws SQLException{
+    private Departamento criarMapDepartamento(Map<Integer, Departamento> map, ResultSet resultSet) throws SQLException {
         Departamento departamento = map.get(resultSet.getInt("departamento.id"));
         if (departamento == null) {
             departamento = InstanciarEntidades.departamento(resultSet);

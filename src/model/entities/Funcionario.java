@@ -70,11 +70,9 @@ public class Funcionario {
 
     @Override
     public String toString() {
-        return "Funcionario{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", email='" + email + '\'' +
-                ", departamento=" + departamento +
-                '}';
+        return "Id: " + id +
+                ", nome: " + nome +
+                ", email: " + email + "\n" +
+                "Departamento:\n" + departamento;
     }
 }

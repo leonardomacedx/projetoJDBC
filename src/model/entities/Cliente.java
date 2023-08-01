@@ -100,14 +100,12 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" +
-                "id=" + id +
-                ", clienteCpf='" + clienteCpf + '\'' +
-                ", nome='" + nome + '\'' +
-                ", email='" + email + '\'' +
-                ", celular='" + celular + '\'' +
-                ", contaBanco='" + contaBanco + '\'' +
-                ", endereco='" + endereco + '\'' +
-                '}';
+        return "Id: " + id +
+                ", CPF: " + clienteCpf +
+                ", nome: " + nome +
+                ", email: " + email +
+                ", celular: " + celular +
+                ", conta bancária: " + contaBanco +
+                ", endereço: " + endereco;
     }
 }

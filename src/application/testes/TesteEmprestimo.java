@@ -9,10 +9,13 @@ import model.entities.Funcionario;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class TesteEmprestimo {
     public static void main(String[] args) {
+
+        Locale.setDefault(Locale.US);
 
         Scanner scanner = new Scanner(System.in);
 
@@ -54,6 +57,32 @@ public class TesteEmprestimo {
         List<Emprestimo> listaEmprestimosDep = emprestimoDao.emprestimoPorDepartamento(idDepartamento);
         for (Emprestimo emprestimoDep : listaEmprestimosDep) {
             System.out.println(emprestimoDep);
+        }
+        System.out.println();
+
+        System.out.println("=== Teste 6 - Emprestimos por cliente");
+        System.out.println("Id do cliente: ");
+        int idCliente = scanner.nextInt();
+        List<Emprestimo> listaEmprestimosCliente = emprestimoDao.emprestimoPorCliente(idCliente);
+        for (Emprestimo emprestimoCliente : listaEmprestimosCliente) {
+            System.out.println(emprestimoCliente);
+        }
+        System.out.println();
+
+        System.out.println("=== Teste 7 - Emprestimos por funcionário");
+        System.out.println("Id do funcionário: ");
+        int idFuncionario = scanner.nextInt();
+        List<Emprestimo> listaEmprestimosFuncionario = emprestimoDao.emprestimoPorFuncionario(idFuncionario);
+        for (Emprestimo emprestimoFuncionario : listaEmprestimosFuncionario) {
+            System.out.println(emprestimoFuncionario);
+        }
+        System.out.println();
+
+        System.out.println("=== Teste 8 - Todos os empréstimos");
+        List<Emprestimo> todosEmprestimos = emprestimoDao.todosEmprestimos();
+        for (Emprestimo emprestimos : todosEmprestimos) {
+            System.out.println(emprestimos);
+            System.out.println("------------");
         }
         System.out.println();
     }

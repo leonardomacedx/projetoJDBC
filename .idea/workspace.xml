@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62c8afb5-07b7-48f9-84ee-bd3b7c3e5ddd" name="Changes" comment="Implementando a classe EmprestimoDaoJDBC">
+    <list default="true" id="62c8afb5-07b7-48f9-84ee-bd3b7c3e5ddd" name="Changes" comment="Criação de maps das entidades separadas em métodos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/testes/TesteEmprestimo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/testes/TesteEmprestimo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/DbException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/DbException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/dao/impl/EmprestimoDaoJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/dao/impl/EmprestimoDaoJDBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/entities/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/entities/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/entities/Departamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/entities/Departamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/entities/Emprestimo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/entities/Emprestimo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/entities/Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/entities/Funcionario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +91,8 @@
       <workItem from="1690462994146" duration="9303000" />
       <workItem from="1690481303802" duration="12780000" />
       <workItem from="1690550019635" duration="1107000" />
-      <workItem from="1690557738258" duration="5645000" />
+      <workItem from="1690557738258" duration="6232000" />
+      <workItem from="1690816019903" duration="5576000" />
     </task>
     <task id="LOCAL-00001" summary="Inicializando repositório com as entidades criadas">
       <option name="closed" value="true" />
@@ -194,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690498300654</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Criação de maps das entidades separadas em métodos">
+      <option name="closed" value="true" />
+      <created>1690563820751</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1690563820751</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,7 +229,8 @@
     <MESSAGE value="inserirEmprestimo implementado e testado" />
     <MESSAGE value="Classe InstanciarEntidades implementada e funcional" />
     <MESSAGE value="Implementando a classe EmprestimoDaoJDBC" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementando a classe EmprestimoDaoJDBC" />
+    <MESSAGE value="Criação de maps das entidades separadas em métodos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Criação de maps das entidades separadas em métodos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -226,11 +239,6 @@
           <url>jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk-19/lib/src.zip!/java.base/java/util/Date.java</url>
           <line>162</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/application/testes/TesteEmprestimo.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
